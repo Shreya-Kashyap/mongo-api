@@ -24,3 +24,16 @@ route.get("/cnames/:pattern",function(request,response){
         response.json(data);
     })
 });
+
+
+
+//update the employee count
+
+route.put("/empcount:name",function(request,response){
+    let cname = request.params.name;
+    companies.update({name:cname},{$set:request.body},function(err,data){
+        if(err)
+         response.send({result:"Not Updated"});
+    response.send({result:"Successfully updated"});
+    })
+});
